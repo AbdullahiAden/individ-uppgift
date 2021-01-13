@@ -2,19 +2,29 @@ import React, { useContext } from 'react'
 import { UserContext } from '../Contexts/UserContext'
 
 export default function UserInfo({userData}) {
-    const {user, setUser}=useContext(UserContext)
+    const {userInfo, setUserInfo}=useContext(UserContext)
+
+         // *get userInfo
+         function getUserInfo() {
+            const url= "https://frebi.willandskill.eu/api/v1/me/"
+            const token =localStorage.getItem("TOKEN")
+            console.log(token);
+    
+            fetch(url,{
+                headers:{
+                    "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
+                }
+            })
+            .then(res=>res.json())
+            .then(data=>setUserInfo(data))
+        }
 
     return (
         <div>
-            {/* {console.log(userData)} */}
-
-            {/* <p>{firstName}</p>
-            <p>{userData.lastName}</p>
-            <p>{userData.email}</p> */}
-            
-            {/* <p>{userData.email}</p> */}
-            
-            
+            <p>{userInfo.firstName}</p>
+            <p>{userInfo.lastName}</p>
+            <p>{userInfo.email}</p>
         </div>
     )
 }

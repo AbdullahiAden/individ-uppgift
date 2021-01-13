@@ -1,14 +1,15 @@
-import React, {useEffect, useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import CustomerListItem from '../components/CustomerListItem'
 import UserInfo from '../components/UserInfo'
+import { UserContext } from '../Contexts/UserContext'
 
 export default function HomePage() {
-    const [userInfo, setUserInfo]=useState({})
+    const {userInfo, setUserInfo}=useContext(UserContext)
 
     const [customerList, setCustomerList]=useState([])
 
-    const [formData, setFormData]=useState({})
+    // const [formData, setFormData]=useState({})
 
     const history=useHistory()
 
@@ -67,7 +68,7 @@ export default function HomePage() {
         .then(data=>setCustomerList(data.results))
     }
         useEffect(()=>{
-            getUserInfo()
+            // getUserInfo()
         },[])
 
         useEffect(()=>{
@@ -94,10 +95,10 @@ export default function HomePage() {
     
     return (
         <div>
-            {/* <UserInfo/> */}
-            <p>{userInfo.firstName}</p>
+            <UserInfo/>
+            {/* <p>{userInfo.firstName}</p>
             <p>{userInfo.lastName}</p>
-            <p>{userInfo.email}</p>
+            <p>{userInfo.email}</p> */}
             
             {/* <form onSubmit={handleOnSubmit}>
                 {renderInput("name", "Customer Name","Name")}

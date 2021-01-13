@@ -12,14 +12,10 @@ import LoginPage from './pages/LoginPage';
 
 
 function App() {
-  // const [user,setUser]=useState(null)
-  // const values= useMemo(()=>({user, setUser}), [user, setUser])
+  const [userInfo,setUserInfo]=useState("")
+  // const values= useMemo(()=>({userInfo, setUserInfo}), [userInfo, setUserInfo])
 
-  // const userDataContext={
-  //   firstName,
-  //   lastName,
-  //   email
-  // }
+  const userDataContext={userInfo,setUserInfo}
 
   return (
     <div >
@@ -32,34 +28,29 @@ function App() {
           <Link to="/home"> Customers</Link>
         </li>
       </ul>
-      <Switch>
+      <UserContext.Provider value={userDataContext}>
 
-        {/* <UserContext.Provider value={values}> */}
+        <Switch>
+          <Route path="/customers/:id/" component={CustomerDetailsPage}/>
 
-        <Route  path="/home/create">
-          <CustomerCreatePage/>
-        </Route>
-        <Route  path="/home" >
+          <Route  path="/home/create">
+            <CustomerCreatePage/>
+          </Route>
+
+          <Route  path="/home" >
              <HomePage/>
-             <CustomerListPage/>
-        </Route>
-        <Route  path="/login">
-          <LoginPage/>
-        </Route>
-
-        <Route path="/customers/:id/" component={CustomerDetailsPage}/>
+          </Route>
 
           {/* <Route  path="/home">
+          <CustomerListPage/>
           </Route> */}
-          
-        {/* </UserContext.Provider> */}
-       
-      </Switch>
-      
 
-      
-      
-     
+          <Route  path="/login">
+            <LoginPage/>
+          </Route>
+       
+        </Switch>
+      </UserContext.Provider>
     </div>
   );
 }

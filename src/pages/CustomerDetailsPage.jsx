@@ -7,6 +7,7 @@ export default function CustomerDetailsPage(props) {
     // console.log(customerId);
 
     const [customerItem, setCustomerItem]=useState(null)
+    const history=useHistory()
 
     // * get customers details 
     function getCustomerDetails() {
@@ -26,6 +27,22 @@ export default function CustomerDetailsPage(props) {
         getCustomerDetails()
     },[])
 
+    // *delete customer
+    function deleteCustomer() {
+        const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+        const token=localStorage.getItem("TOKEN")
+        fetch(url,{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            }
+        })
+        .then(()=>history.push("/home"))
+        
+    }
+
+
     return (
         <div>
              {/* <h1>Customer Detail Page</h1> */}
@@ -42,34 +59,36 @@ export default function CustomerDetailsPage(props) {
                                 <td>{customerItem.organisationNr}</td>
                             </tr>
                             <tr>
-                                <td>Payment Term</td>
-                                <td>{customerItem.paymentTerm}</td>
-                            </tr>
-                            <tr>
-                                <td>Phone Number</td>
-                                <td>{customerItem.phoneNumber}</td>
+                                <td>VAT Number</td>
+                                <td>{customerItem.vatNr}</td>
                             </tr>
                             <tr>
                                 <td>Reference</td>
                                 <td>{customerItem.reference}</td>
                             </tr>
                             <tr>
-                                <td>VAT Number</td>
-                                <td>{customerItem.vatNr}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>{customerItem.email}</td>
+                                <td>Payment Term</td>
+                                <td>{customerItem.paymentTerm}</td>
                             </tr>
                             <tr>
                                 <td>Website</td>
                                 <td> {customerItem.website}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td> <a href={`mailto:${customerItem.email}`}> {customerItem.email}</a> </td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>{customerItem.phoneNumber}</td>
                             </tr>
                         </tbody>  
                     </table>
                 </div>
             )
             : ( <span>loading...</span> )}
+
+            <button onClick={deleteCustomer}>Delete Customer</button>
         </div>
     )
 }
