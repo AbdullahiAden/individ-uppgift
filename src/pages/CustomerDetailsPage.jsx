@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 
 export default function CustomerDetailsPage(props) {
+    console.log(props);
     const customerId = props.match.params.id
     // console.log(customerId);
 
     const [customerItem, setCustomerItem]=useState(null)
 
+    // * get customers details 
     function getCustomerDetails() {
-        const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}`
+        const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
         const token=localStorage.getItem("TOKEN")
         fetch(url,{
         headers:{
@@ -17,17 +19,17 @@ export default function CustomerDetailsPage(props) {
         }
     })
     .then(res=>res.json())
-    .then(data=>setCustomerItem(data.results))
+    .then(data=>setCustomerItem(data))
     }
 
     useEffect(()=>{
-        // getCustomerDetails()
+        getCustomerDetails()
     },[])
 
     return (
         <div>
-            {/* <h1>Customer Detail Page</h1> */}
-            {console.log(customerItem)}
+             {/* <h1>Customer Detail Page</h1> */}
+             {console.log(customerItem)}
             {/* if its loaded */}
             {customerItem
             ? (
@@ -53,29 +55,21 @@ export default function CustomerDetailsPage(props) {
                             </tr>
                             <tr>
                                 <td>VAT Number</td>
-                                {/* VG: VALIDATION  */}
                                 <td>{customerItem.vatNr}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><a href={`mailto:${customerItem.email}`}>{customerItem.email}</a> </td>
+                                <td>{customerItem.email}</td>
                             </tr>
                             <tr>
                                 <td>Website</td>
-                                <td><a href={customerItem.website} target="-blank">{customerItem.website}</a> </td>
+                                <td> {customerItem.website}</td>
                             </tr>
                         </tbody>  
                     </table>
-
-               
-                    
                 </div>
             )
-            :
-            (
-                <span>loading...</span>
-            )
-            }
+            : ( <span>loading...</span> )}
         </div>
     )
 }

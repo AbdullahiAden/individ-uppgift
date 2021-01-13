@@ -41,17 +41,17 @@ function App() {
         </Route>
         <Route  path="/home" >
              <HomePage/>
+             <CustomerListPage/>
         </Route>
         <Route  path="/login">
           <LoginPage/>
         </Route>
 
-        {/* <Route path="/customers/:id/" component={CustomerDetailsPage}/> */}
+        <Route path="/customers/:id/" component={CustomerDetailsPage}/>
 
-
-          <Route exact path="/home">
-              <CustomerListPage/>
-          </Route>
+          {/* <Route  path="/home">
+          </Route> */}
+          
         {/* </UserContext.Provider> */}
        
       </Switch>
