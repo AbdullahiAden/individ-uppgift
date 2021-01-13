@@ -9,7 +9,6 @@ export default function UserInfo({userData}) {
             const url= "https://frebi.willandskill.eu/api/v1/me/"
             const token =localStorage.getItem("TOKEN")
             console.log(token);
-    
             fetch(url,{
                 headers:{
                     "Content-Type":"application/json",

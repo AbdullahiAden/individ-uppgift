@@ -44,7 +44,6 @@ function App() {
           {/* <Route  path="/home">
           <CustomerListPage/>
           </Route> */}
-
           <Route  path="/login">
             <LoginPage/>
           </Route>
