@@ -34,18 +34,22 @@ function App() {
           <Link to="/home"> Customers</Link>
         </li>
       </ul>
-      
+
+      <CustomersListContext.Provider value={CustomersListContextValue}>
+
         <Switch>
- <UserContext.Provider value={userDataContext}>         
-<CustomersListContext.Provider value={CustomersListContextValue}>
+
+                 
           <Route path="/customers/:id/" component={CustomerDetailsPage} />
 
           <Route  path="/home/create">
             <CustomerCreatePage/>
           </Route>
+      <UserContext.Provider value={userDataContext}>  
 
-
-  
+          <Route  path="/home" >
+             <HomePage/>
+          </Route>
           <Route  path="/home">
             <CustomerListPage/>
           </Route>
@@ -55,15 +59,14 @@ function App() {
           <Route  path="/login">
             <LoginPage/>
           </Route>
-<Route  path="/home" >
-             <HomePage/>
-          </Route>
- </CustomersListContext.Provider>
-         
-  </UserContext.Provider>     
+
+        </UserContext.Provider>   
+
         </Switch>
-       
-      
+       </CustomersListContext.Provider>
+
+         
+
     </div>
   );
 }

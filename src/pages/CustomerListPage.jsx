@@ -6,6 +6,8 @@ export default function CustomerListPage() {
     const {customerList,setCustomerList}=useContext(CustomersListContext)
 
 
+    
+
     function getCustomerList() {
         const url="https://frebi.willandskill.eu/api/v1/customers/"
         const token=localStorage.getItem("TOKEN")
@@ -21,13 +23,14 @@ export default function CustomerListPage() {
         
     }
 
-        useEffect(()=>{
-            getCustomerList()
-        },[])
+useEffect(()=>{
+        getCustomerList()
+    },[])
+        
 
     return (
         <div>
-            List Page
+            <h2>LIST PAGE.....</h2>
             {customerList.map(item=>{
                 return(<CustomerListItem key={item.id} customerData={item}/>)
             })}

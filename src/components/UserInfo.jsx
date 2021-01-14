@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../Contexts/UserContext'
 
-export default function UserInfo({userData}) {
+export default function UserInfo() {
     const {userInfo, setUserInfo}=useContext(UserContext)
 
     useEffect(()=>{

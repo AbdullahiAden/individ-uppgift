@@ -73,6 +73,7 @@ export default function HomePage() {
             getUserInfo()
         },[])
 
+        // ***map not func, mapping down should off
         useEffect(()=>{
             // getCustomerList()
         },[])
@@ -97,23 +98,9 @@ export default function HomePage() {
     return (
         <div>
             <UserInfo/>
-            {/* <p>{userInfo.firstName}</p>
-            <p>{userInfo.lastName}</p>
-            <p>{userInfo.email}</p> */}
             
-            {/* <form onSubmit={handleOnSubmit}>
-                {renderInput("name", "Customer Name","Name")}
-                {renderInput("organistationNr", "Organisation Number")}
-                {renderInput("vatNr", "Vat Namber ")}
-                {renderInput("reference", "Reference ")}
-                {renderInput("paymentTerm", "Payment Term", "number")}
-                {renderInput("website", "Website " , "url")}
-                {renderInput("email", "Customer Email","email")}
-                {renderInput("phoneNumber", "Phone Number", "tel")}
-                
-                <button type="submit">Create Customers</button>
-            </form>
-            <code>{JSON.stringify(formData)}</code> */}
+            
+           
 
 
             {/* {customerList.map(item=>{
