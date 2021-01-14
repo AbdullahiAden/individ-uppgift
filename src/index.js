@@ -9,10 +9,7 @@ import { CustomersListContext } from './Contexts/CustomersListContext';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    {/* <CustomersListContext> */}
       <App />
-    {/* </CustomersListContext> */}
-      
     </BrowserRouter>
     
   </React.StrictMode>,
