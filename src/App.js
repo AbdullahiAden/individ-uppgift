@@ -36,14 +36,14 @@ function App() {
     
       <Wrapper>
 
-      <ul>
+      {/* <ul>
         <li>
           <Link to="/home/create">Create Customer</Link>
         </li>
         <li>
           <Link to="/home"> Customers</Link>
         </li>
-      </ul>
+      </ul> */}
 
       <CustomersListContext.Provider value={CustomersListContextValue}>
         <Switch>

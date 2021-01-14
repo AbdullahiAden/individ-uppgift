@@ -68,6 +68,7 @@ export default function CustomerDetailsPage(props) {
                             <tr>
                                 <td>organisation Number</td>
                                 <td>{customerItem.organisationNr}</td>
+                                {/* <td>{customerItem.organisationNr}</td> */}
                             </tr>
                             <tr>
                                 <td>VAT Number</td>

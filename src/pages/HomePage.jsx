@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 import CustomerListItem from '../components/CustomerListItem'
 import UserInfo from '../components/UserInfo'
 import { CustomersListContext } from '../Contexts/CustomersListContext'
@@ -30,6 +30,14 @@ export default function HomePage() {
     
     return (
         <div>
+            <ul>
+        <li>
+          <Link to="/home/create">Create Customer</Link>
+        </li>
+        <li>
+          <Link to="/home"> Customers</Link>
+        </li>
+      </ul>
             
  {/* <UserInfo/> */}
             <p>{userInfo.firstName}</p>

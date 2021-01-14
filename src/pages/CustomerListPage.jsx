@@ -9,8 +9,6 @@ font-size:2rem;
 color:black;
 `
 
-
-
 export default function CustomerListPage() {
     const {customerList,setCustomerList}=useContext(CustomersListContext)
 

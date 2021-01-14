@@ -50,7 +50,7 @@ export default function CustomerCreatePage() {
             <h1>Create customer</h1>
             <form onSubmit={handleOnSubmit}  >
                 {renderInput("name", "Customer Name","Name")}
-                {renderInput("organistationNr", "Organisation Number")}
+                {renderInput("organisationNr", "Organisation Number")}
                 {renderInput("vatNr", "Vat Namber ")}
                 {renderInput("reference", "Reference ")}
                 {renderInput("paymentTerm", "Payment Term", "number")}
@@ -58,7 +58,7 @@ export default function CustomerCreatePage() {
                 {renderInput("email", "Customer Email","email")}
                 {renderInput("phoneNumber", "Phone Number", "tel")}
 
-                <Buttons type="submit">Create Customers</Buttons>
+                <Buttons type="submit">Create Customer</Buttons>
                 
                 {/* <button  className=""></button> */}
             </form>
