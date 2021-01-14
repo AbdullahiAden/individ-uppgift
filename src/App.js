@@ -10,6 +10,17 @@ import CustomerListPage from './pages/CustomerListPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
+import styled,{ThemeProvider} from "styled-components";
+
+import Wrapper from "./components/Wrapper";
+
+const theme = {
+    font:"Roboto",
+    backgroundColor:"blue",
+
+  }
+
+
 function App() {
   const [userInfo,setUserInfo]=useState({})
   // ****
@@ -18,10 +29,12 @@ function App() {
 
   const userDataContext={userInfo,setUserInfo}
   const CustomersListContextValue={customerList,setCustomerList}
-
+    
 
   return (
-    <div >
+    <ThemeProvider theme={theme}>
+    
+      <Wrapper>
 
       <ul>
         <li>
@@ -33,10 +46,8 @@ function App() {
       </ul>
 
       <CustomersListContext.Provider value={CustomersListContextValue}>
-
         <Switch>
           <Route path="/customers/:id/" component={CustomerDetailsPage} />
-
           <Route  path="/home/create">
             <CustomerCreatePage/>
           </Route>
@@ -55,9 +66,9 @@ function App() {
           </UserContext.Provider>   
 
         </Switch>
-      </CustomersListContext.Provider>
-
-    </div>
+        </CustomersListContext.Provider>
+        </Wrapper>
+    // </ThemeProvider>
   );
 }
 

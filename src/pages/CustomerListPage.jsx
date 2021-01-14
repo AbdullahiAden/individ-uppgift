@@ -2,6 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import CustomerListItem from '../components/CustomerListItem'
 import { CustomersListContext } from '../Contexts/CustomersListContext'
 
+import styled from "styled-components"
+
+const Heading =styled.h1`
+font-size:2rem;
+color:black;
+`
+
+
+
 export default function CustomerListPage() {
     const {customerList,setCustomerList}=useContext(CustomersListContext)
 
@@ -27,7 +36,7 @@ useEffect(()=>{
 
     return (
         <div>
-            <h2>LIST PAGE.....</h2>
+            <Heading>Customers</Heading>
             {customerList.map(item=>{
                 return(<CustomerListItem key={item.id} customerData={item}/>)
             })}

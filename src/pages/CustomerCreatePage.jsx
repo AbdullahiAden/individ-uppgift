@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {useHistory} from 'react-router-dom'
+import {Buttons} from '../components/Buttons'
 
 export default function CustomerCreatePage() {
 
@@ -15,9 +16,9 @@ export default function CustomerCreatePage() {
 
     function renderInput(name, label,type) {
         return(
-            <div>
+            <div className="form-group">
                 <label >{label}</label>
-                <input 
+                <input className="form-control"
                     type={type || "text"}
                     name={name}
                     onChange={handleOnChange}
@@ -47,7 +48,7 @@ export default function CustomerCreatePage() {
     return (
         <div>
             <h1>Create customer</h1>
-            <form onSubmit={handleOnSubmit}>
+            <form onSubmit={handleOnSubmit}  >
                 {renderInput("name", "Customer Name","Name")}
                 {renderInput("organistationNr", "Organisation Number")}
                 {renderInput("vatNr", "Vat Namber ")}
@@ -56,8 +57,10 @@ export default function CustomerCreatePage() {
                 {renderInput("website", "Website " , "url")}
                 {renderInput("email", "Customer Email","email")}
                 {renderInput("phoneNumber", "Phone Number", "tel")}
+
+                <Buttons type="submit">Create Customers</Buttons>
                 
-                <button type="submit">Create Customers</button>
+                {/* <button  className=""></button> */}
             </form>
             <code>{JSON.stringify(formData)}</code>
             

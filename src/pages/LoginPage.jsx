@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../Contexts/UserContext';
 
+import styled from "styled-components";
+import {Buttons} from "../components/Buttons";
+
 export default function LoginPage() {
     // webb19@willandskill.se
     // Abdullahi.Aden@yh.nackademin.se
@@ -47,13 +50,13 @@ export default function LoginPage() {
 
     return (
         <div>
-            <form onSubmit={handleOnSubmit}>
-                <label>Email</label>
-                <input name="email" value={formData.email} onChange={handleOnChange}></input>
-                <label>Password</label>
-                <input name="password" value={formData.password} onChange={handleOnChange}></input>
+            <form onSubmit={handleOnSubmit} className="form-group">
+                <label>Email:</label>
+                <input className="form-control form-control-lg" name="email" value={formData.email} onChange={handleOnChange}></input>
+                <label>Password:</label>
+                <input className="form-control form-control-lg " name="password" value={formData.password} onChange={handleOnChange}></input>
 
-                <button  type="submit">Login</button>
+                <Buttons primary type="submit">Login</Buttons>
             </form>
             {/* <button>Get user info</button>
             <button>Get customers list</button> */}

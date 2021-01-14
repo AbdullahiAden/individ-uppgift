@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+import styled from 'styled-components';
+import {Buttons} from "../components/Buttons"
+
+
+// inherit styles of Button , only change bg
+const ButtonSecondary =styled (Buttons)`
+background:red;
+margin-left:0;
+
+`
 
 export default function CustomerDetailsPage(props) {
     console.log(props);
@@ -84,11 +95,12 @@ export default function CustomerDetailsPage(props) {
                             </tr>
                         </tbody>  
                     </table>
+                    
                 </div>
             )
             : ( <span>loading...</span> )}
-
-            <button onClick={deleteCustomer}>Delete Customer</button>
+            
+            <ButtonSecondary onClick={deleteCustomer}>Delete</ButtonSecondary>
         </div>
     )
 }

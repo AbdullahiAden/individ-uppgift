@@ -5,6 +5,10 @@ import UserInfo from '../components/UserInfo'
 import { CustomersListContext } from '../Contexts/CustomersListContext'
 import { UserContext } from '../Contexts/UserContext'
 
+import styled from "styled-components";
+
+import Wrapper from "../components/Wrapper";
+
 export default function HomePage() {
     const {userInfo, setUserInfo}=useContext(UserContext)
 
@@ -26,10 +30,15 @@ export default function HomePage() {
     
     return (
         <div>
-            {/* <UserInfo/> */}
+            
+ {/* <UserInfo/> */}
             <p>{userInfo.firstName}</p>
             <p>{userInfo.lastName}</p>
             <p>{userInfo.email}</p>
+
+            
+            
+           
         
         </div>
     )
