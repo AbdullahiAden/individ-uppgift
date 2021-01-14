@@ -70,29 +70,29 @@ export default function HomePage() {
         .then(data=>setCustomerList(data))
     }
         useEffect(()=>{
-            // getUserInfo()
+            getUserInfo()
         },[])
 
         useEffect(()=>{
-            getCustomerList()
+            // getCustomerList()
         },[])
 
          // *get userInfo
-    // function getUserInfo() {
-    //     const url= "https://frebi.willandskill.eu/api/v1/me/"
-    //     const token =localStorage.getItem("TOKEN")
-    //     console.log(token);
+    function getUserInfo() {
+        const url= "https://frebi.willandskill.eu/api/v1/me/"
+        const token =localStorage.getItem("TOKEN")
+        console.log(token);
 
-    //     fetch(url,{
-    //         headers:{
-    //             "Content-Type":"application/json",
-    //             "Authorization":`Bearer ${token}`
-    //         }
-    //     })
-    //     .then(res=>res.json())
-    //     .then(data=>setUserInfo(data))
-    //     // history.push("/customers")
-    // }
+        fetch(url,{
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>setUserInfo(data))
+        // history.push("/customers")
+    }
     
     return (
         <div>
