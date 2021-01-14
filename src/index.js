@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
+import { CustomersListContext } from './Contexts/CustomersListContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    {/* <CustomersListContext> */}
       <App />
+    {/* </CustomersListContext> */}
+      
     </BrowserRouter>
     
   </React.StrictMode>,

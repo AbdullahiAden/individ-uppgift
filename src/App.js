@@ -2,7 +2,9 @@ import React, { useMemo, useState } from 'react';
 import { Route, Switch,Link } from 'react-router-dom';
 
 import './App.css';
+
 import { UserContext } from './Contexts/UserContext';
+import {CustomersListContext} from './Contexts/CustomersListContext';
 import CustomerCreatePage from './pages/CustomerCreatePage';
 import CustomerDetailsPage from './pages/CustomerDetailsPage';
 import CustomerListPage from './pages/CustomerListPage';
@@ -13,9 +15,13 @@ import LoginPage from './pages/LoginPage';
 
 function App() {
   const [userInfo,setUserInfo]=useState("")
-  // const values= useMemo(()=>({userInfo, setUserInfo}), [userInfo, setUserInfo])
+  // ****
+  const [customerList, setCustomerList]=useState([])
+  // const values= useMemo(()=>({customerList, setCustomerList}), [customerList, setCustomerList])
 
   const userDataContext={userInfo,setUserInfo}
+  const CustomersListContextValue={customerList,setCustomerList}
+
 
   return (
     <div >
@@ -29,26 +35,31 @@ function App() {
         </li>
       </ul>
       <UserContext.Provider value={userDataContext}>
-
+        <CustomersListContext.Provider value={CustomersListContextValue}>
         <Switch>
-          <Route path="/customers/:id/" component={CustomerDetailsPage}/>
+
+          <Route path="/customers/:id/" component={CustomerDetailsPage} />
 
           <Route  path="/home/create">
             <CustomerCreatePage/>
           </Route>
 
+<Route  path="/home">
+          <CustomerListPage/>
+          </Route>
           <Route  path="/home" >
+            
              <HomePage/>
           </Route>
 
-          {/* <Route  path="/home">
-          <CustomerListPage/>
-          </Route> */}
+          
+          
           <Route  path="/login">
             <LoginPage/>
           </Route>
        
         </Switch>
+        </CustomersListContext.Provider>
       </UserContext.Provider>
     </div>
   );

@@ -2,12 +2,13 @@ import React, {useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import CustomerListItem from '../components/CustomerListItem'
 import UserInfo from '../components/UserInfo'
+import { CustomersListContext } from '../Contexts/CustomersListContext'
 import { UserContext } from '../Contexts/UserContext'
 
 export default function HomePage() {
     const {userInfo, setUserInfo}=useContext(UserContext)
 
-    const [customerList, setCustomerList]=useState([])
+    const {customerList,setCustomerList}=useContext(CustomersListContext)
 
     // const [formData, setFormData]=useState({})
 
@@ -65,7 +66,8 @@ export default function HomePage() {
             }
         })
         .then(res=>res.json())
-        .then(data=>setCustomerList(data.results))
+        // ******************************
+        .then(data=>setCustomerList(data))
     }
         useEffect(()=>{
             // getUserInfo()
@@ -76,21 +78,21 @@ export default function HomePage() {
         },[])
 
          // *get userInfo
-    function getUserInfo() {
-        const url= "https://frebi.willandskill.eu/api/v1/me/"
-        const token =localStorage.getItem("TOKEN")
-        console.log(token);
+    // function getUserInfo() {
+    //     const url= "https://frebi.willandskill.eu/api/v1/me/"
+    //     const token =localStorage.getItem("TOKEN")
+    //     console.log(token);
 
-        fetch(url,{
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":`Bearer ${token}`
-            }
-        })
-        .then(res=>res.json())
-        .then(data=>setUserInfo(data))
-        // history.push("/customers")
-    }
+    //     fetch(url,{
+    //         headers:{
+    //             "Content-Type":"application/json",
+    //             "Authorization":`Bearer ${token}`
+    //         }
+    //     })
+    //     .then(res=>res.json())
+    //     .then(data=>setUserInfo(data))
+    //     // history.push("/customers")
+    // }
     
     return (
         <div>
@@ -114,9 +116,9 @@ export default function HomePage() {
             <code>{JSON.stringify(formData)}</code> */}
 
 
-            {customerList.map(item=>{
+            {/* {customerList.map(item=>{
                 return(<CustomerListItem key={item.id} customerData={item}/>)
-            })}
+            })} */}
         
         </div>
     )
