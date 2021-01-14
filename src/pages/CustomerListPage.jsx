@@ -5,9 +5,6 @@ import { CustomersListContext } from '../Contexts/CustomersListContext'
 export default function CustomerListPage() {
     const {customerList,setCustomerList}=useContext(CustomersListContext)
 
-
-    
-
     function getCustomerList() {
         const url="https://frebi.willandskill.eu/api/v1/customers/"
         const token=localStorage.getItem("TOKEN")
