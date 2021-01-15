@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 import {Buttons} from "../components/Buttons"
@@ -13,7 +13,6 @@ margin-left:0;
 `
 
 export default function CustomerDetailsPage(props) {
-    console.log(props);
     const customerId = props.match.params.id
     // console.log(customerId);
 
@@ -56,7 +55,6 @@ export default function CustomerDetailsPage(props) {
 
     return (
         <div>
-             {/* <h1>Customer Detail Page</h1> */}
              {console.log(customerItem)}
             {/* if its loaded */}
             {customerItem
@@ -102,6 +100,7 @@ export default function CustomerDetailsPage(props) {
             : ( <span>loading...</span> )}
             
             <ButtonSecondary onClick={deleteCustomer}>Delete</ButtonSecondary>
+            <Link to ={`/customers/${customerId}/edit`}>Edit Customer</Link>
         </div>
     )
 }

@@ -1,11 +1,31 @@
-import React, { useState } from 'react'
-import {useHistory} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import {Buttons} from '../components/Buttons'
 
-export default function CustomerCreatePage() {
 
+export default function CustomerUpdatePage(props) {
+    const customerId=props.match.params.id
     const [formData, setFormData]=useState({})
     const history=useHistory()
+
+    // * get customers details 
+    function getCustomerDetails() {
+        const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+        const token=localStorage.getItem("TOKEN")
+        fetch(url,{
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+        }
+    })
+    .then(res=>res.json())
+    .then(data=>setFormData(data))
+    }
+
+    useEffect(()=>{
+        getCustomerDetails()
+    },[])
 
     function handleOnChange(e) {
         const name=e.target.name
@@ -21,33 +41,33 @@ export default function CustomerCreatePage() {
                 <input className="form-control"
                     type={type || "text"}
                     name={name}
+                    value={formData[name] || ""}
                     onChange={handleOnChange}
                 />
             </div>
         )
     }
+
+    // * update customer details 
     function handleOnSubmit(e) {
         e.preventDefault()
-        const url="https://frebi.willandskill.eu/api/v1/customers/"
+        const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
         const token=localStorage.getItem("TOKEN")
-        fetch(url,{
-            method:"POST",
+        fetch(url, {
+            method:"PUT",
             body:JSON.stringify(formData),
             headers:{
                 "Content-Type":"application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization":`Bearer ${token}`
             }
         })
         .then(res=>res.json())
-        .then(data=>{
-            history.push("/home")
-        }) 
-        
+        .then(()=>history.push(`/customers/${customerId}`))
     }
 
     return (
         <div>
-            <h1>Create customer</h1>
+            <h1>update customer</h1>
             <form onSubmit={handleOnSubmit}  >
                 {renderInput("name", "Customer Name","Name")}
                 {renderInput("organisationNr", "Organisation Number")}
@@ -58,11 +78,10 @@ export default function CustomerCreatePage() {
                 {renderInput("email", "Customer Email","email")}
                 {renderInput("phoneNumber", "Phone Number", "tel")}
 
-                <Buttons type="submit">Create Customer</Buttons>
+                <Buttons type="submit">Update Customer</Buttons>
                 
             </form>
-            <code>{JSON.stringify(formData)}</code>
-            
+
         </div>
     )
 }

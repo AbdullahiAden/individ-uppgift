@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Route, Switch,Link } from 'react-router-dom';
 
 import './App.css';
+import './index.css';
 import { UserContext } from './Contexts/UserContext';
 import {CustomersListContext} from './Contexts/CustomersListContext';
 import CustomerCreatePage from './pages/CustomerCreatePage';
@@ -10,15 +11,9 @@ import CustomerListPage from './pages/CustomerListPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
-import styled,{ThemeProvider} from "styled-components";
 
 import Wrapper from "./components/Wrapper";
-
-const theme = {
-    font:"Roboto",
-    backgroundColor:"blue",
-
-  }
+import CustomerUpdatePage from './pages/CustomerUpdatePage';
 
 
 function App() {
@@ -32,21 +27,20 @@ function App() {
     
 
   return (
-    <ThemeProvider theme={theme}>
-    
-      <Wrapper>
+      <Wrapper >
 
-      {/* <ul>
+      <ul>
         <li>
           <Link to="/home/create">Create Customer</Link>
         </li>
         <li>
           <Link to="/home"> Customers</Link>
         </li>
-      </ul> */}
+      </ul>
 
       <CustomersListContext.Provider value={CustomersListContextValue}>
         <Switch>
+          <Route path="/customers/:id/edit" component={CustomerUpdatePage}></Route>
           <Route path="/customers/:id/" component={CustomerDetailsPage} />
           <Route  path="/home/create">
             <CustomerCreatePage/>
@@ -68,7 +62,6 @@ function App() {
         </Switch>
         </CustomersListContext.Provider>
         </Wrapper>
-    // </ThemeProvider>
   );
 }
 

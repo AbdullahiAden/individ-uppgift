@@ -30,23 +30,8 @@ export default function HomePage() {
     
     return (
         <div>
-            <ul>
-        <li>
-          <Link to="/home/create">Create Customer</Link>
-        </li>
-        <li>
-          <Link to="/home"> Customers</Link>
-        </li>
-      </ul>
-            
- {/* <UserInfo/> */}
-            <p>{userInfo.firstName}</p>
-            <p>{userInfo.lastName}</p>
-            <p>{userInfo.email}</p>
-
-            
-            
-           
+            <UserInfo/>
+          
         
         </div>
     )

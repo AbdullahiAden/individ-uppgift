@@ -1,5 +1,15 @@
 import React, { useContext, useEffect } from 'react'
+import styled from 'styled-components'
 import { UserContext } from '../Contexts/UserContext'
+
+
+const StyledP=styled.p`
+font-size:20px;
+display:flex;
+padding-left:1rem;
+
+`
+
 
 export default function UserInfo() {
     const {userInfo, setUserInfo}=useContext(UserContext)
@@ -24,10 +34,12 @@ export default function UserInfo() {
         }
 
     return (
-        <div>
-            <p>{userInfo.firstName}</p>
-            <p>{userInfo.lastName}</p>
-            <p>{userInfo.email}</p>
+        <div >
+            <StyledP>{userInfo.firstName}</StyledP>
+            <StyledP>{userInfo.lastName}</StyledP>
+            <StyledP>{userInfo.email}</StyledP>
+
+
         </div>
     )
 }

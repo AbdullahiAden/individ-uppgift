@@ -14,5 +14,10 @@ width: 50%;
 display: inline-block;
 
 `
-export {Buttons}
+const StyledDivs=styled.div `
+    padding-left:1rem;
+    font-size:2rem;
+`
+
+export {Buttons,StyledDivs}
 

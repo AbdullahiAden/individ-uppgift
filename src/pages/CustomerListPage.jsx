@@ -3,10 +3,13 @@ import CustomerListItem from '../components/CustomerListItem'
 import { CustomersListContext } from '../Contexts/CustomersListContext'
 
 import styled from "styled-components"
+import {StyledDivs} from "../components/Buttons"
 
-const Heading =styled.h1`
-font-size:2rem;
-color:black;
+// inherit styles 
+const Heading =styled(StyledDivs)`
+text-decoration:underline;
+padding-bottom:10px;
+
 `
 
 export default function CustomerListPage() {
@@ -34,7 +37,7 @@ useEffect(()=>{
 
     return (
         <div>
-            <Heading>Customers</Heading>
+            <Heading>Customers :</Heading>
             {customerList.map(item=>{
                 return(<CustomerListItem key={item.id} customerData={item}/>)
             })}
