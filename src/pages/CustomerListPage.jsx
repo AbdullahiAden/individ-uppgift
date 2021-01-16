@@ -5,13 +5,12 @@ import { CustomersListContext } from '../Contexts/CustomersListContext'
 import styled from "styled-components"
 import {StyledDivs} from "../components/Buttons"
 
-// inherit styles 
+// inherit styles and add changes
 const Heading =styled(StyledDivs)`
 text-decoration:underline;
 padding-bottom:10px;
 
 `
-
 export default function CustomerListPage() {
     const {customerList,setCustomerList}=useContext(CustomersListContext)
 
@@ -41,8 +40,6 @@ useEffect(()=>{
             {customerList.map(item=>{
                 return(<CustomerListItem key={item.id} customerData={item}/>)
             })}
-            
-
             
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, {useState } from 'react';
 import { Route, Switch,Link } from 'react-router-dom';
 
 import './App.css';
@@ -11,16 +11,12 @@ import CustomerListPage from './pages/CustomerListPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
-
 import Wrapper from "./components/Wrapper";
 import CustomerUpdatePage from './pages/CustomerUpdatePage';
 
-
 function App() {
   const [userInfo,setUserInfo]=useState({})
-  // ****
   const [customerList, setCustomerList]=useState([])
-  // const values= useMemo(()=>({customerList, setCustomerList}), [customerList, setCustomerList])
 
   const userDataContext={userInfo,setUserInfo}
   const CustomersListContextValue={customerList,setCustomerList}

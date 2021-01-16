@@ -4,7 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import {Buttons} from "../components/Buttons"
 
-
 // inherit styles of Button , only change bg
 const ButtonSecondary =styled (Buttons)`
 background:red;
@@ -14,8 +13,6 @@ margin-left:0;
 
 export default function CustomerDetailsPage(props) {
     const customerId = props.match.params.id
-    // console.log(customerId);
-
     const [customerItem, setCustomerItem]=useState(null)
     const history=useHistory()
 
@@ -24,14 +21,14 @@ export default function CustomerDetailsPage(props) {
         const url=`https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
         const token=localStorage.getItem("TOKEN")
         fetch(url,{
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":`Bearer ${token}`
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>setCustomerItem(data))
         }
-    })
-    .then(res=>res.json())
-    .then(data=>setCustomerItem(data))
-    }
 
     useEffect(()=>{
         getCustomerDetails()
@@ -66,7 +63,6 @@ export default function CustomerDetailsPage(props) {
                             <tr>
                                 <td>organisation Number</td>
                                 <td>{customerItem.organisationNr}</td>
-                                {/* <td>{customerItem.organisationNr}</td> */}
                             </tr>
                             <tr>
                                 <td>VAT Number</td>

@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 
 import {Buttons} from '../components/Buttons'
 
-
 export default function CustomerUpdatePage(props) {
     const customerId=props.match.params.id
     const [formData, setFormData]=useState({})
@@ -17,11 +16,11 @@ export default function CustomerUpdatePage(props) {
             headers:{
                 "Content-Type":"application/json",
                 "Authorization":`Bearer ${token}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>setFormData(data))
         }
-    })
-    .then(res=>res.json())
-    .then(data=>setFormData(data))
-    }
 
     useEffect(()=>{
         getCustomerDetails()

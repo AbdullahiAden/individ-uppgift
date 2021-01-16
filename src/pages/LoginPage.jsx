@@ -6,8 +6,6 @@ import styled from "styled-components";
 import {Buttons} from "../components/Buttons";
 
 export default function LoginPage() {
-    // webb19@willandskill.se
-    // Abdullahi.Aden@yh.nackademin.se
     const [formData, setFormData]=useState({
         email:"Abdullahi.Aden@yh.nackademin.se",
         password:"javascriptoramverk"
@@ -58,8 +56,6 @@ export default function LoginPage() {
 
                 <Buttons primary type="submit">Login</Buttons>
             </form>
-            {/* <button>Get user info</button>
-            <button>Get customers list</button> */}
         </div>
     )
 }

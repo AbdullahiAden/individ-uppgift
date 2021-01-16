@@ -7,9 +7,7 @@ const StyledP=styled.p`
 font-size:20px;
 display:flex;
 padding-left:1rem;
-
 `
-
 
 export default function UserInfo() {
     const {userInfo, setUserInfo}=useContext(UserContext)
@@ -38,7 +36,6 @@ export default function UserInfo() {
             <StyledP>{userInfo.firstName}</StyledP>
             <StyledP>{userInfo.lastName}</StyledP>
             <StyledP>{userInfo.email}</StyledP>
-
 
         </div>
     )
