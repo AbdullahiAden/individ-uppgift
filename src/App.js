@@ -25,14 +25,14 @@ function App() {
   return (
       <Wrapper >
 
-      <ul>
+      {/* <ul>
         <li>
           <Link to="/home/create">Create Customer</Link>
         </li>
         <li>
           <Link to="/home"> Customers</Link>
         </li>
-      </ul>
+      </ul> */}
 
       <CustomersListContext.Provider value={CustomersListContextValue}>
         <Switch>
@@ -46,9 +46,9 @@ function App() {
             <Route  path="/home" >
               <HomePage/>
             </Route>
-            <Route  path="/home">
+            {/* <Route  path="/home">
               <CustomerListPage/>
-            </Route>
+            </Route> */}
 
             <Route  path="/login">
               <LoginPage/>
